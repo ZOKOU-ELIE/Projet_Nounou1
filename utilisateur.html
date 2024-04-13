@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription</title>
+    <link rel="stylesheet" href="utilisateur.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inscription Utilisateur</h1>
+        <form id="InscriptionForm" action="utilisateurs.php" method="post">
+            <div class="form-group">
+                <label for="NOM">Nom :</label>
+                <input type="text" id="NOM" name="NOM" required>
+            </div>
+            <div class="form-group">
+                <label for="PRENOM">Prenom :</label>
+                <input type="text" id="PRENOM" name="PRENOM" required>
+            </div>
+            <div class="form-group">
+                <label for="EMAIL">Email :</label>
+                <input type="email" id="EMAIL" name="EMAIL" required>
+            </div>
+            <div class="form-group">
+                <label for="mot_de_passe">Mot de passe :</label>
+                <input type="password" id="MOT_DE_PASSE" name="MOT_DE_PASSE" required>
+            </div>
+            <div class="form-group">
+                <label for="NUMERO_TELEPHONE">Numéro de téléphone :</label>
+                <input type="tel" id="NUMERO_TELEPHONE" name="NUMERO_TELEPHONE" required>
+            </div>
+            <div class="form-group">
+                <label for="ROLE">Rôle :</label>
+                <select id="role" name="ROLE" required> 
+                    <option value="">Sélectionnez un rôle</option>
+                    <option value="parent">Parent</option>
+                    <option value="nounou">Nounou</option>
+                </select>
+            </div>
+            <button type="submit">S'inscrire</button>
+            <p>Vous avez déjà un compte ? <a href="connexion.html">Se connecter</a></p>
+        </form>
+
+        <div id="message" style="display: none;">Informations enregistrées avec succès</div>
+    </div>
+    <script>
+        // Définition de la fonction
+        function redirection() {
+            console.log("Redirection en cours...");
+            var role = document.getElementById("role").value;
+            if (role == "parent") {
+                window.location.href = "enfant.html";
+            } else if (role == "nounou") {
+                window.location.href = "emploi.html";
+            }
+        }
+    
+        document.getElementById("InscriptionForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Empêche l'envoi du formulaire
+    
+            // Affiche le message de succès
+            document.getElementById("message").style.display = "block";
+    
+            console.log("Message de succès affiché.");
+    
+            // Appel de la fonction redirection après une pause de 2 secondes
+            setTimeout(redirection, 2000);
+    
+            console.log("Redirection programmée.");
+    
+            // Réinitialise les champs du formulaire après la redirection
+            setTimeout(function() {
+                console.log("Réinitialisation du formulaire.");
+                document.getElementById("InscriptionForm").reset();
+            }, 2000);
+        });
+    </script>
+    
+</body>
+</html>

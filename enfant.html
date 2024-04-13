@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Utilisateur</title>
+    <link rel="stylesheet" href="enfant.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enregistrement Enfants</h1>
+        <form id="InscriptionForm" action="enfants.php" method="post">
+            <div class="form-group">
+                <label for="NOM">Nom de l'enfant :</label>
+                <input type="text" id="NOM" name="NOM" required>
+            </div>
+            <div class="form-group">
+                <label for="PRENOM">Prenom de l'enfant :</label>
+                <input type="text" id="PRENOM" name="PRENOM" required>
+            </div>
+            <div class="form-group">
+                <label for="DATE_DE_NAISSANCE">Date de Naissance de l'enfant :</label>
+                <input type="date" id="DATE_DE_NAISSANCE" name="DATE_DE_NAISSANCE" required>
+            </div>
+            <div class="form-group">
+                <label for="ALLERGIES">Allergies :</label>
+                <input type="text" id="ALLERGIES" name="ALLERGIES" required>
+            </div>
+            <div class="form-group">
+                <label for="BESOINS_SPECIAUX">Besoins Speciaux :</label>
+                <input type="text" id="BESOINS_SPECIAUX" name="BESOINS_SPECIAUX" required>
+            </div>
+            <button type="submit">S'enregistrer</button>
+        </form>
+        <div id="message" style="display: none;">Inscription enregistrées avec succès</div>
+    </div>
+    <script>
+        document.getElementById("InscriptionForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            document.getElementById("message").style.display = "block"; 
+
+            document.getElementById("InscriptionForm").reset();
+       
+        });
+    </script>
+</body>
+</html>

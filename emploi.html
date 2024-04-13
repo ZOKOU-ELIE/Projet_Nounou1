@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Utilisateur</title>
+    <link rel="stylesheet" href="emploi.css">
+</head>
+<body>
+    <div class="container">
+        <h1>INFORMATIONS SUR LA NOUNOU</h1>
+        <form id="inscriptionForm" action="emploi.php" method="post">
+            <div class="form-group">
+                <label for="DATE">Date</label>
+                <input type="date" id="DATE" name="DATE" required>
+            </div>
+            <div class="form-group">
+                <label for="EMAIL">Email :</label>
+                <input type="email" id="EMAIL" name="EMAIL" required> 
+            </div>
+            <div class="form-group">
+                <label for="HEURE_DEBUT">Heure début</label>
+                <input type="time" id="HEURE_DEBUT" name="HEURE_DEBUT" required>
+            </div>
+            <div class="form-group">
+                <label for="HEURE_FIN">Heure Fin</label>
+                <input type="time" id="HEURE_FIN" name="HEURE_FIN" required>
+            </div>
+            <button type="submit">S'enregistrer</button>
+        </form>
+        <div id="message" style="display: none;">Informations enregistrées avec succès!</div>
+    </div>
+    <script>
+        document.getElementById("inscriptionForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire
+            // Affiche le message de succès
+            document.getElementById("message").style.display = "block";
+            // Réinitialise les champs du formulaire
+            document.getElementById("inscriptionForm").reset();
+        });
+    </script>
+</body>
+</html>

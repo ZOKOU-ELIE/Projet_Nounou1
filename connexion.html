@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Utilisateur</title>
+    <link rel="stylesheet" href="connexion.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Connexion Utilisateur</h1>
+        <form id="InscriptionForm" action="connexion.php" method="post">
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mot_de_passe">Mot de passe :</label>
+                <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Rôle :</label>
+                <select id="role" name="role" required>
+                    <option value="">Sélectionnez un rôle</option>
+                    <option value="parent">Parent</option>
+                    <option value="nounou">Nounou</option>
+                </select>
+            <button type="submit">Se connecter</button>
+            <p>Vous n'avez de compte ? <a href="utilisateur.html">Inscription</a> </p>    
+        </form>
+    </div>
+    <script>
+        // Définition de la fonction nommée
+        function redirection() {
+            console.log("Redirection en cours...");
+            var role = document.getElementById("role").value;
+            if (role == "parent") {
+                window.location.href = "enfant.html";
+            } else if (role == "nounou") {
+                window.location.href = "emploi.html";
+            }
+        }
+    
+        document.getElementById("InscriptionForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Empêche l'envoi du formulaire
+    
+            // Appel de la fonction redirection après une pause de 2 secondes
+            setTimeout(redirection, 2000);
+    
+            console.log("Redirection programmée.");
+    
+            // Réinitialise les champs du formulaire après la redirection
+            setTimeout(function() {
+                console.log("Réinitialisation du formulaire.");
+                document.getElementById("InscriptionForm").reset();
+            }, 2000);
+        });
+    </script>
+    
+</body>
+</html>
