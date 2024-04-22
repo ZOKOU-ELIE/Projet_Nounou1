@@ -1,10 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-}
-
+/* Container */
 .container {
     max-width: 500px;
     margin: 50px auto;
@@ -14,31 +8,33 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Titre */
 h1 {
     text-align: center;
 }
 
-.form-group {
+/* Formulaire */
+#InscriptionForm {
     margin-bottom: 20px;
 }
 
+/* Label */
 label {
     display: block;
     margin-bottom: 5px;
 }
 
+/* Input */
 input[type="text"],
-input[type="text"],
-input[type="date"],
-input[type="text"],
-input[type="text"],
-select {
+input[type="date"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 10px; /* Ajout de marges entre les champs */
 }
 
+/* Bouton */
 button {
     width: 100%;
     padding: 10px;
@@ -51,4 +47,15 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+/* Message de confirmation */
+#message {
+    display: none;
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px; /* Marge supplémentaire au-dessus du message */
+    border-radius: 5px;
 }

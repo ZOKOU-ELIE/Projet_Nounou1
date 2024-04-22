@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Inscription Utilisateur</h1>
-        <form id="InscriptionForm" action="utilisateurs.php" method="post">
+        <form id="InscriptionForm" action="utilisateur.php" method="post">
             <div class="form-group">
                 <label for="NOM">Nom :</label>
                 <input type="text" id="NOM" name="NOM" required>
@@ -38,6 +38,8 @@
                     <option value="nounou">Nounou</option>
                 </select>
             </div>
+            <!-- Champ caché pour stocker l'ID du parent -->
+            <input type="hidden" id="parent_id" name="parent_id" value="<?php echo isset($_GET['parent_id']) ? $_GET['parent_id'] : ''; ?>">
             <button type="submit">S'inscrire</button>
             <p>Vous avez déjà un compte ? <a href="connexion.html">Se connecter</a></p>
         </form>
@@ -45,33 +47,28 @@
         <div id="message" style="display: none;">Informations enregistrées avec succès</div>
     </div>
     <script>
-        // Définition de la fonction
+        // Définition de la fonction de redirection
         function redirection() {
-            console.log("Redirection en cours...");
             var role = document.getElementById("role").value;
             if (role == "parent") {
-                window.location.href = "enfant.html";
+                window.location.href = "enfant.php?parent_id=<?php echo isset($_GET['parent_id']) ? $_GET['parent_id'] : ''; ?>";
             } else if (role == "nounou") {
-                window.location.href = "emploi.html";
+                window.location.href = "emploi.php?parent_id=<?php echo isset($_GET['parent_id']) ? $_GET['parent_id'] : ''; ?>";
             }
         }
     
+        // Événement submit du formulaire
         document.getElementById("InscriptionForm").addEventListener("submit", function(event){
             event.preventDefault(); // Empêche l'envoi du formulaire
     
-            // Affiche le message de succès
+            // Affichage du message de succès
             document.getElementById("message").style.display = "block";
     
-            console.log("Message de succès affiché.");
-    
-            // Appel de la fonction redirection après une pause de 2 secondes
+            // Appel de la fonction de redirection après une pause de 2 secondes
             setTimeout(redirection, 2000);
     
-            console.log("Redirection programmée.");
-    
-            // Réinitialise les champs du formulaire après la redirection
+            // Réinitialisation des champs du formulaire après la redirection
             setTimeout(function() {
-                console.log("Réinitialisation du formulaire.");
                 document.getElementById("InscriptionForm").reset();
             }, 2000);
         });

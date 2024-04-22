@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST["EMAIL"]) && isset($_PO
 
     //Vérification de la connexion
     if ($conn -> connect_error) {
-        die "la connexion a echouée" . $conn -> connect_error
+        die " la connexion a echouée " . $conn -> connect_error
     }
 
     //Préparation de la rêquete SQL pour récupérer l'utilisateur en fonction de l'email et du mot de passe
